@@ -7,7 +7,7 @@ import { IEvent } from '../service/events';
 const MapEventCard: React.FC<{ event: IEvent }> = ({ event }) => {
     return (
         <IonCol size="12" sizeMd="4">
-            <EventCard event={event}></EventCard>
+            <EventCard cardClassNames="ion-no-margin ion-margin-horizontal" event={event}></EventCard>
         </IonCol>
     );
 };

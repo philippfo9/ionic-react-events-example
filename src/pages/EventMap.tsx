@@ -24,6 +24,7 @@ const EventMapPage: React.FC = () => {
                 <div style={{ height: '100%', width: '100%' }}>
                     <MapWithEvents
                         openEventCard={(event) => {
+                            console.log('event clicked', event);
                             setEventForDetailView(event);
                         }}
                         center={{ lat: 48.210033, lng: 16.363449 }}

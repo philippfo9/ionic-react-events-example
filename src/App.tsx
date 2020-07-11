@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle } from 'ionicons/icons';
+import { personOutline, mapOutline, listOutline } from 'ionicons/icons';
 import UserHome from './pages/UserHome';
 import EventList from './pages/EventList';
 import EventMap from './pages/EventMap';
@@ -45,16 +45,13 @@ const App: React.FC = () => {
                         </IonRouterOutlet>
                         <IonTabBar slot="bottom">
                             <IonTabButton tab="profile" href="/profile">
-                                <IonIcon icon={triangle} />
-                                <IonLabel>Profil</IonLabel>
+                                <IonIcon icon={personOutline} />
                             </IonTabButton>
                             <IonTabButton tab="eventList" href="/events-list">
-                                <IonIcon icon={ellipse} />
-                                <IonLabel>Eventliste</IonLabel>
+                                <IonIcon icon={listOutline} />
                             </IonTabButton>
                             <IonTabButton tab="eventsMap" href="/events-map">
-                                <IonIcon icon={square} />
-                                <IonLabel>Map</IonLabel>
+                                <IonIcon icon={mapOutline} />
                             </IonTabButton>
                         </IonTabBar>
                     </IonTabs>

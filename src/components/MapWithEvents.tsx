@@ -3,12 +3,15 @@ import GoogleMapReact, { Coords } from 'google-map-react';
 import './MapWithEvents.scss';
 import { IEvent } from '../service/events';
 import { IonIcon } from '@ionic/react';
-import { pinOutline, headsetOutline } from 'ionicons/icons';
+import { headsetOutline } from 'ionicons/icons';
 
 const EventMapMarker: React.FC<{ event: IEvent; lat: number; lng: number; markerClicked: () => any }> = ({ event, markerClicked }) => {
     return (
         <div
-            onClick={markerClicked}
+            onClick={(e) => {
+                e.preventDefault();
+                markerClicked();
+            }}
             style={{
                 width: '25px',
                 height: '25px',
@@ -23,6 +26,7 @@ const EventMapMarker: React.FC<{ event: IEvent; lat: number; lng: number; marker
                 style={{
                     width: '20px',
                     height: '20px',
+                    marginTop: '2px',
                 }}
                 color="light"
                 icon={headsetOutline}
@@ -41,6 +45,12 @@ interface IEventsMapProps {
 const MapWithEvents: React.FC<IEventsMapProps> = ({ events, center, zoom, openEventCard }) => {
     return (
         <GoogleMapReact
+            onClick={() => {
+                console.log('map clicked');
+            }}
+            onChildClick={(e, o) => {
+                console.log('on child click', e, o);
+            }}
             bootstrapURLKeys={{ key: 'AIzaSyA2QvNXuMtGwEFa1JpJ-5ePXVccLvRilEM' }}
             defaultCenter={center}
             zoom={zoom}

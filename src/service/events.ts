@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export interface IEventLocation {
     name: string;
     lat?: number;
@@ -70,5 +72,23 @@ const events: IEvent[] = [
         distance: 0.4,
     },
 ];
+
+export function formatEventDate(event: IEvent): string {
+    const startMom = moment(event.startDate);
+    const endMom = moment(event.endDate);
+    if (startMom.isSame(endMom, 'day')) {
+        return `${formatDayOfDate(startMom)} at ${formatTimeOfDate(startMom)}`;
+    } else {
+        return `${formatDayOfDate(startMom)} - ${formatDayOfDate(endMom)}`;
+    }
+}
+
+function formatTimeOfDate(momDate: moment.Moment): string {
+    return momDate.format('HH:mm');
+}
+
+function formatDayOfDate(momDate: moment.Moment): string {
+    return momDate.format('ddd, MMM DD');
+}
 
 export default events;

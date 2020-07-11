@@ -1,5 +1,5 @@
 import React from 'react';
-import './MapEventCard.css';
+import './MapEventCard.scss';
 import { IonCol } from '@ionic/react';
 import EventCard from './EventCard';
 import { IEvent } from '../service/events';

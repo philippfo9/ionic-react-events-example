@@ -1,6 +1,6 @@
 import React from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonGrid, IonRow } from '@ionic/react';
-import './EventList.css';
+import './EventList.scss';
 import events from '../service/events';
 import EventListItem from '../components/EventListItem';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import GoogleMapReact, { Coords } from 'google-map-react';
-import './MapWithEvents.css';
+import './MapWithEvents.scss';
 import { IEvent } from '../service/events';
 import { IonIcon } from '@ionic/react';
 import { pinOutline, headsetOutline } from 'ionicons/icons';

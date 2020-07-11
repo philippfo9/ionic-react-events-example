@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import './EventMap.css';
+import './EventMap.scss';
 import MapWithEvents from '../components/MapWithEvents';
 import events, { IEvent } from '../service/events';
 import MapEventCard from '../components/MapEventCard';
@@ -21,7 +21,7 @@ const EventMapPage: React.FC = () => {
                         <IonTitle size="large">Events Map</IonTitle>
                     </IonToolbar>
                 </IonHeader>
-                <div style={{ height: 'calc(100% - 51px)', width: '100%' }}>
+                <div style={{ height: '100%', width: '100%' }}>
                     <MapWithEvents
                         openEventCard={(event) => {
                             setEventForDetailView(event);

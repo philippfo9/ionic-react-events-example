@@ -14,7 +14,7 @@ import {
     IonCol,
     IonActionSheet,
 } from '@ionic/react';
-import './UserHome.css';
+import './UserHome.scss';
 import UserContext from '../service/userContext';
 import { useTakeProfilePicture } from '../hooks/useTakeProfilePicture';
 import { camera, close, trash } from 'ionicons/icons';

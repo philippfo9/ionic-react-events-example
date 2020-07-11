@@ -5,6 +5,8 @@ import { IEvent } from '../service/events';
 import { IonIcon } from '@ionic/react';
 import { headsetOutline } from 'ionicons/icons';
 
+const GOOGLE_MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY ?? '';
+
 const EventMapMarker: React.FC<{ event: IEvent; lat: number; lng: number; markerClicked: () => any }> = ({ event, markerClicked }) => {
     return (
         <div
@@ -51,7 +53,7 @@ const MapWithEvents: React.FC<IEventsMapProps> = ({ events, center, zoom, openEv
             onChildClick={(e, o) => {
                 console.log('on child click', e, o);
             }}
-            bootstrapURLKeys={{ key: 'AIzaSyA2QvNXuMtGwEFa1JpJ-5ePXVccLvRilEM' }}
+            bootstrapURLKeys={{ key: GOOGLE_MAPS_API_KEY }}
             defaultCenter={center}
             zoom={zoom}
             options={{ fullscreenControl: false }}

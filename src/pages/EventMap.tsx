@@ -12,38 +12,30 @@ const EventMapPage: React.FC = () => {
         <IonPage>
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>Suche nach Events auf der Map</IonTitle>
+                    <IonTitle>Finde Events in deiner Nähe</IonTitle>
                 </IonToolbar>
             </IonHeader>
-            <IonContent>
+            <IonContent className="eventMapContent">
                 <IonHeader collapse="condense">
                     <IonToolbar>
-                        <IonTitle size="large">Events Map</IonTitle>
+                        <IonTitle size="large">Finde Events in deiner Nähe</IonTitle>
                     </IonToolbar>
                 </IonHeader>
-                <div style={{ height: '100%', width: '100%' }}>
+                <div style={{ flex: 1 }}>
                     <MapWithEvents
+                        closeEventCard={() => {
+                            setEventForDetailView(undefined);
+                        }}
                         openEventCard={(event) => {
-                            console.log('event clicked', event);
                             setEventForDetailView(event);
                         }}
                         center={{ lat: 48.210033, lng: 16.363449 }}
                         events={events}
-                        zoom={11}
+                        zoom={13}
                     ></MapWithEvents>
                 </div>
                 {eventForDetailView && (
-                    <div
-                        style={{
-                            position: 'absolute',
-                            left: '0',
-                            width: '100vw',
-                            bottom: '0',
-                            display: 'flex',
-                            alignContent: 'center',
-                            justifyContent: 'center',
-                        }}
-                    >
+                    <div className="mapEventCard">
                         <MapEventCard event={eventForDetailView}></MapEventCard>
                     </div>
                 )}

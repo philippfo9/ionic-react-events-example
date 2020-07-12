@@ -25,7 +25,12 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.scss';
+
+/* Common css utility classes */
+import './theme/common.scss';
+
 import UserContext from './service/userContext';
+import EventDetailPage from './pages/EventDetailPage';
 
 const App: React.FC = () => {
     const [user, setUser] = useState({
@@ -41,6 +46,7 @@ const App: React.FC = () => {
                             <Route path="/profile" component={UserHome} exact={true} />
                             <Route path="/events-list" component={EventList} exact={true} />
                             <Route path="/events-map" component={EventMap} />
+                            <Route path="/events/:name" component={EventDetailPage} />
                             <Route path="/" render={() => <Redirect to="/profile" />} exact={true} />
                         </IonRouterOutlet>
                         <IonTabBar slot="bottom">

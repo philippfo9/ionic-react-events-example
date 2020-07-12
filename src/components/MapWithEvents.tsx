@@ -7,32 +7,10 @@ import { headsetOutline } from 'ionicons/icons';
 
 const GOOGLE_MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY ?? '';
 
-const EventMapMarker: React.FC<{ event: IEvent; lat: number; lng: number; markerClicked: () => any }> = ({ event, markerClicked }) => {
+const EventMapMarker: React.FC<{ event: IEvent; lat: number; lng: number }> = ({ event }) => {
     return (
-        <div
-            onClick={(e) => {
-                e.preventDefault();
-                markerClicked();
-            }}
-            style={{
-                width: '25px',
-                height: '25px',
-                borderRadius: '50%',
-                backgroundColor: '#4854e0',
-                display: 'flex',
-                justifyContent: 'center',
-                alignContent: 'center',
-            }}
-        >
-            <IonIcon
-                style={{
-                    width: '20px',
-                    height: '20px',
-                    marginTop: '2px',
-                }}
-                color="light"
-                icon={headsetOutline}
-            ></IonIcon>
+        <div className="markerWrapper">
+            <IonIcon color="light" icon={headsetOutline}></IonIcon>
         </div>
     );
 };
@@ -40,18 +18,17 @@ const EventMapMarker: React.FC<{ event: IEvent; lat: number; lng: number; marker
 interface IEventsMapProps {
     events: IEvent[];
     openEventCard: (event: IEvent) => any;
+    closeEventCard: () => any;
     center: Coords;
     zoom: number;
 }
 
-const MapWithEvents: React.FC<IEventsMapProps> = ({ events, center, zoom, openEventCard }) => {
+const MapWithEvents: React.FC<IEventsMapProps> = ({ events, center, zoom, closeEventCard, openEventCard }) => {
     return (
         <GoogleMapReact
-            onClick={() => {
-                console.log('map clicked');
-            }}
-            onChildClick={(e, o) => {
-                console.log('on child click', e, o);
+            onClick={closeEventCard}
+            onChildClick={(key, child) => {
+                openEventCard(child.event);
             }}
             bootstrapURLKeys={{ key: GOOGLE_MAPS_API_KEY }}
             defaultCenter={center}
@@ -59,13 +36,7 @@ const MapWithEvents: React.FC<IEventsMapProps> = ({ events, center, zoom, openEv
             options={{ fullscreenControl: false }}
         >
             {events.map((ev) => (
-                <EventMapMarker
-                    markerClicked={() => openEventCard(ev)}
-                    key={ev.name}
-                    lat={ev.location.lat!}
-                    lng={ev.location.lng!}
-                    event={ev}
-                ></EventMapMarker>
+                <EventMapMarker key={ev.name} lat={ev.location.lat!} lng={ev.location.lng!} event={ev}></EventMapMarker>
             ))}
         </GoogleMapReact>
     );

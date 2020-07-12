@@ -53,7 +53,7 @@ const ProfilePage: React.FC = () => {
                     )}
                     {profilePicture && (
                         <IonRow>
-                            <IonCol size="12">
+                            <IonCol size="24">
                                 <img
                                     src={profilePicture.base64 ?? profilePicture.webviewPath}
                                     alt="profilePicture"

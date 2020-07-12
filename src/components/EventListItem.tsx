@@ -5,15 +5,13 @@ import EventCard from './EventCard';
 
 const EventListItem: React.FC<{ event: IEvent }> = ({ event }) => {
     return (
-        <IonCol size="12" sizeMd="4">
+        <IonCol size="24" sizeMd="8" sizeLg="6">
             <EventCard event={event}>
                 <div>
-                    <IonText color="primary" style={{ fontWeight: '700' }}>
-                        {formatEventDate(event)}
-                    </IonText>
+                    <IonText style={{ fontSize: '0.8rem', fontWeight: '800' }}>In {event.distance} km Distanz</IonText>
                 </div>
                 <div>
-                    <IonText style={{ fontSize: '0.8rem', fontWeight: '800' }}>In {event.distance} km Distanz</IonText>
+                    <span className="preview-text">{event.description}</span>
                 </div>
             </EventCard>
         </IonCol>
